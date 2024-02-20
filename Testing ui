@@ -1,0 +1,53 @@
+-- whitelist script GUI made by strandedlukas
+local function handleButtonClick(buttonNumber)
+    print("The player pressed Yes")
+    screenGui:Destroy()
+end
+
+local function createNotification()
+    local notification = game.StarterGui:SetCore("SendNotification", {
+        Title = "Checking...",
+        Text = "Are you on the whitelist?",
+        Duration = 15,
+        Button1 = "Yes",
+        Button2 = "Yes",
+        Callback = handleButtonClick,
+    })
+end
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "CheckingGui"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0.5, 0, 0.1, 0)
+frame.Position = UDim2.new(0.25, 0, 0.45, 0)
+frame.BackgroundColor3 = Color3.new(1, 1, 1) -- White background color
+frame.BackgroundTransparency = 0.5
+frame.Parent = screenGui
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Text = "Checking for whitelist..."
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Position = UDim2.new(0, 0, 0, 0)
+textLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+textLabel.BackgroundTransparency = 1
+textLabel.Font = Enum.Font.SourceSansBold
+textLabel.TextColor3 = Color3.new(0, 0, 0)
+textLabel.TextScaled = true
+textLabel.Parent = frame
+
+local function removeGui()
+    wait(5)
+    screenGui:Destroy()
+end
+
+removeGui()
+
+createNotification()
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("testing ui (tps)", "DarkTheme")
+
+local MainTab = Window:NewTab("The fucking intro took me some time so does it work??")
